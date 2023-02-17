@@ -1,6 +1,30 @@
-import { add2Nums } from "./index.js";
-import { test, expect } from "vitest";
+import { expect, it } from "vitest";
+import { isValidBracketsBracesParentheses } from "./index.js";
 
-test("1 + 1 = 2", () => {
-  expect(add2Nums(1, 1)).toBe(2);
+it('should return true if given the string "( hello )"', () => {
+  expect(isValidBracketsBracesParentheses("( )")).toBe(true);
+});
+
+it('should return true if given the string "[ ( ) ]"', () => {
+  expect(isValidBracketsBracesParentheses("[ ( ) ]")).toBe(true);
+});
+
+it('should return true if given the string "{ } [ ( [] ) ]"', () => {
+  expect(isValidBracketsBracesParentheses("{ } [ ( [] ) ]")).toBe(true);
+});
+
+it('should return true if given the string "( )[ ]{ }"', () => {
+  expect(isValidBracketsBracesParentheses("( )[ ]{ }")).toBe(true);
+});
+
+it('should return false if given the string "( ]"', () => {
+  expect(isValidBracketsBracesParentheses("( ]")).toBe(false);
+});
+
+it('should return false if given the string "( [ ) ]"', () => {
+  expect(isValidBracketsBracesParentheses("( [ ) ]")).toBe(false);
+});
+
+it('should return false if given the string "console.log("', () => {
+  expect(isValidBracketsBracesParentheses('console.log("')).toBe(false);
 });
